@@ -3,11 +3,16 @@ import React, { useState } from "react";
 function Login({toggleForm}) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [formData, setFormData] = useState([]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log("Hello World!", email);
+
+    const newDataEntry = {email:email, password:password};
+    setFormData([...formData, newDataEntry])
+    console.log("Hello World!", formData);
   }
+  
 
   return (
     <div>
@@ -33,6 +38,15 @@ function Login({toggleForm}) {
         <button>Login</button>
       </form>
       <button onClick={() => toggleForm("signup")}>Don't have account? Register here</button>
+      <div className="data_display">
+        {formData.map((data) => {
+          return (
+            <div className="form_data">
+              {data.email}, {data.password}
+            </div>
+          )
+        })}
+      </div>
     </div>
   );
 }
