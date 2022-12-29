@@ -8,10 +8,15 @@ function Login({toggleForm}) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-
-    const newDataEntry = {email:email, password:password};
+    if( email && password){
+    const newDataEntry = { id: new Date().getTime().toString(),  email:email, password:password};
     setFormData([...formData, newDataEntry])
     console.log("Hello World!", formData);
+    setEmail("");
+    setPassword("")
+    } else {
+      alert("Please fill the both field")
+    }
   }
   
 
@@ -27,6 +32,7 @@ function Login({toggleForm}) {
           placeholder="abc@gmail.com"
           id="email"
           name="email"
+          autoComplete="off"
         />
        </div>
       <div className="row">
@@ -38,6 +44,7 @@ function Login({toggleForm}) {
           placeholder="********"
           id="password"
           name="password"
+          autoComplete="off"
         />
       </div>
         <button type="submit">Login</button>
@@ -46,7 +53,7 @@ function Login({toggleForm}) {
       <div className="data_display">
         {formData.map((data) => {
           return (
-            <div className="form_data">
+            <div className="form_data" key={data.id}>
               <h2>{data.email}</h2>
               <h2>{data.password}</h2>
             </div>
