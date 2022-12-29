@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import "./Login.css";
 
 function Login({toggleForm}) {
   const [email, setEmail] = useState("");
@@ -15,9 +16,10 @@ function Login({toggleForm}) {
   
 
   return (
-    <div>
+    <div className="login_page">
       <form action="" onSubmit={handleSubmit}>
-        <label htmlFor="email">Email</label>
+       <div className="row">
+       <label htmlFor="email">Email</label>
         <input
           value={email}
           onChange={e => setEmail(e.target.value)}
@@ -26,7 +28,9 @@ function Login({toggleForm}) {
           id="email"
           name="email"
         />
-        <label htmlFor="password">Password</label>
+       </div>
+      <div className="row">
+      <label htmlFor="password">Password</label>
         <input
           value={password}
           onChange={e => setPassword(e.target.value)}
@@ -35,14 +39,16 @@ function Login({toggleForm}) {
           id="password"
           name="password"
         />
-        <button>Login</button>
+      </div>
+        <button type="submit">Login</button>
       </form>
       <button onClick={() => toggleForm("signup")}>Don't have account? Register here</button>
       <div className="data_display">
         {formData.map((data) => {
           return (
             <div className="form_data">
-              {data.email}, {data.password}
+              <h2>{data.email}</h2>
+              <h2>{data.password}</h2>
             </div>
           )
         })}
