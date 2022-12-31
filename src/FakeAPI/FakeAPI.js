@@ -25,7 +25,7 @@ function FakeAPI() {
     <div>
         {data.map((ele) => {
             return(
-                <h1>{ele.title}</h1>
+                <h1 key={ele.id}>{ele.title}</h1>
             )
         })}
     </div>
