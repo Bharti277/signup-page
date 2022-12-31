@@ -4,8 +4,12 @@ function FakeAPI() {
     const [data, setData] = useState([]);
 
     const getStoreData = async () => {
-        const storeData = await fetch("https://fakestoreapi.com/products");
+        try{
+            const storeData = await fetch("https://fakestoreapi.com/products");
         setData(await storeData.json());
+        }catch(err) {
+            console.log(err)
+        }
     }
     useEffect(() => {
         getStoreData()
