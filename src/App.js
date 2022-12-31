@@ -2,6 +2,7 @@ import Login from "./Login/Login"
 import './App.css';
 import { useState } from "react";
 import Signup from "./Signup/Signup";
+import FakeAPI from "./FakeAPI/FakeAPI";
 
 function App() {
   const [isLogin, setIsLogin] = useState("login");
@@ -11,6 +12,7 @@ function App() {
   return (
     <div className="App">
      {isLogin === "login" ? <Login toggleForm={toggleForm} /> :<Signup toggleForm={toggleForm} />}
+     <FakeAPI />
     </div>
   );
 }
